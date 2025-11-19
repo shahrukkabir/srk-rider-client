@@ -12,7 +12,6 @@ const AuthLayout = () => {
         <div className="flex-1 px-4">
           <img src={authImg} alt="authentication image" />
         </div>
-
         <div className="flex-1 mt-6">
           <Outlet />
         </div>

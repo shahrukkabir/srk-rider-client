@@ -32,7 +32,7 @@ const ClientMarquee = () => {
           {clients.map((client) => (
             <div
               key={client.name}
-              className="flex items-center justify-center h-12 w-32 flex-shrink-0 mx-6"
+              className="flex items-center justify-center h-12 w-32 mx-6"
             >
               <img
                 src={client.logo}

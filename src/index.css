@@ -5,32 +5,17 @@
   font-optical-sizing: auto;
 }
 
-
 @import "tailwindcss";
 
 @plugin "daisyui" {
   themes: light --default;
 }
 
-/* 
-
-@plugin "daisyui/theme" {
-  name: "light";
-  default: true;
-  --color-primary: #3C65F5;
-  --color-secondary: #007eff;
-  --color-accent: #706f6f;
+@theme {
+  --breakpoint-8xl: 96rem; /* 1536px */
 }
 
-@plugin "daisyui/theme" {
-  name: "dark";
-  --color-primary: #3C65F5;
-  --color-secondary: #007eff;
-  --color-accent: #706f6f;
-} */
-
-
-.bg-img{
+.bg-img {
   background-image: url('../src/assets/be-a-merchant-bg.png');
   background-repeat: no-repeat;
 }

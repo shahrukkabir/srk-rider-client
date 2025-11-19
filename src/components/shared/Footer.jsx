@@ -1,11 +1,11 @@
 import React from "react";
-import ProFastLogo from "./ProfastLogo";
 import {
   FaLinkedinIn,
   FaXTwitter,
   FaFacebookF,
   FaYoutube,
 } from "react-icons/fa6";
+import SrkRiderLogo from "./SrkRiderLogo";
 
 const navLinks = [
   { to: "/services", label: "Services" },
@@ -44,7 +44,7 @@ const Footer = () => {
     <div className="bg-gray-100 px-4 md:px-6 py-1">
       <footer className="max-w-7xl mx-auto bg-gray-900 rounded-3xl px-4 my-6 py-10 md:py-14 text-center flex flex-col items-center">
         <div className="flex flex-col items-center gap-2">
-          <ProFastLogo color="white" />
+          <SrkRiderLogo color="white" />
           <p className="text-gray-300 text-sm md:text-base max-w-xl mt-2">
             Enjoy fast, reliable parcel delivery with real-time tracking and
             zero hassle. From personal packages to business shipments — we

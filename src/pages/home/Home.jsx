@@ -10,7 +10,7 @@ import WhatOurCustomerSaid from "../../components/homeComponents/WhatOurCustomer
 
 const Home = () => {
   return (
-    <div className="space-y-16 md:space-y-26">
+    <div className="space-y-16 md:space-y-26 mx-w-8xl">
       <Banner />
       <HowItWorks />
       <Services />

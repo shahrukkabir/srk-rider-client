@@ -8,12 +8,11 @@ import 'aos/dist/aos.css';
 import Aos from 'aos';
 import "./index.css";
 
-
 Aos.init();
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <div className='font-urbanist max-w-7xl mx-auto'>
+    <div className='font-urbanist'>
       <AuthProvider>
         <RouterProvider router={router} />
       </AuthProvider>

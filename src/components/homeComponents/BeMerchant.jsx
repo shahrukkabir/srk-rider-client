@@ -18,7 +18,7 @@ const BeMerchant = () => {
         </p>
         <div className="flex gap-4 flex-wrap">
           <Button variant="round">Become a Merchant</Button>
-          <Button variant="outline">Earn with SrkRider Courier </Button>
+          <Button variant="outline">Earn with Srk Courier </Button>
         </div>
       </div>
       <div>
