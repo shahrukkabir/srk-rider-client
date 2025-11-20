@@ -2,6 +2,13 @@ import { createBrowserRouter } from "react-router";
 import Root from "../layout/Root";
 import Home from "../pages/home/Home";
 import AuthLayout from './../layout/AuthLayout';
+import LogIn from "../pages/authentication/LogIn";
+import Register from "../pages/authentication/Register";
+import Coverage from './../pages/coverage/Coverage';
+import Forbidden from './../pages/forbidden/Forbidden';
+import Spinner from './../components/ui/Spinner';
+import PrivateRoutes from './PrivateRoutes';
+import SendParcel from './../pages/sendParcel/SendParcel';
 
 export const router = createBrowserRouter([
     {
@@ -11,7 +18,24 @@ export const router = createBrowserRouter([
             {
                 index: true,
                 Component: Home
-            }
+            },
+            {
+                path: "coverage",
+                hydrateFallbackElement: <Spinner />,
+                loader: () => fetch("./serviceCenter.json"),
+                Component: Coverage,
+            }, {
+                path: 'forbidden',
+                Component: Forbidden
+            },
+            // private routes
+            {
+                path: "sendParcel",
+                hydrateFallbackElement: <Spinner />,
+                loader: () => fetch("./serviceCenter.json"),
+                element: (<PrivateRoutes> <SendParcel /> </PrivateRoutes>
+                ),
+            },
         ]
     },
     {
@@ -20,11 +44,11 @@ export const router = createBrowserRouter([
         children: [
             {
                 path: 'login',
-                // Component: Login
+                Component: LogIn
             },
             {
                 path: 'register',
-                // Component: Register
+                Component: Register
             }
         ]
     }

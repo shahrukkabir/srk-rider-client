@@ -49,7 +49,7 @@ const reviews = [
 const WhatOurCustomerSaid = () => {
     return (
         <section className="bg-[#f3f5f6] py-12 px-2 md:px-0">
-            <div className="max-w-6xl mx-auto">
+            <div className="max-w-6xl mx-auto ">
                 <div className="flex flex-col items-center mb-6">
                     <img
                         src={customerTop}
@@ -128,7 +128,7 @@ const WhatOurCustomerSaid = () => {
                     ))}
                 </Swiper>
                 {/* Custom navigation and pagination */}
-                <div className="flex items-center gap-4 mt-6 w-2/8 mx-auto ">
+                <div className="flex items-center mt-6 w-3/6 md:w-2/12 mx-auto">
                     <button className="swiper-prev w-8 h-8 rounded-full bg-[#CAEB66] border border-gray-300 flex items-center justify-center text-sm text-[#184042]">
                         <FaArrowLeft size={12} />
                     </button>

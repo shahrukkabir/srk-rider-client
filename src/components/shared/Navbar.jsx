@@ -77,16 +77,16 @@ const Navbar = () => {
         {/* Buttons */}
         <div className="hidden md:flex items-center gap-3 md:gap-4 z-20">
           {user ? (
-            <Button onClick={handleLogOut} variant="danger">
+            <Button onClick={handleLogOut} className="cursor-pointer" variant="danger">
               Log Out
             </Button>
           ) : (
-            <Link to="/login">
-              <Button>Log In</Button>
-            </Link>
+            <NavLink to="/login">
+              <Button className="cursor-pointer">Log In</Button>
+            </NavLink>
           )}
-          <Link to='/beARider'>  <Button variant="secondary">Be a rider</Button></Link>
-          <span className="flex items-center justify-center bg-gray-900 rounded-full w-8 h-8 ml-2">
+          <Link to='/beARider'>  <Button className="cursor-pointer" variant="secondary">Be a rider</Button></Link>
+          <span className="cursor-pointer flex items-center justify-center bg-gray-900 rounded-full w-8 h-8 ml-2">
             <FiArrowUpRight className="text-lime-200 text-lg" />
           </span>
         </div>
