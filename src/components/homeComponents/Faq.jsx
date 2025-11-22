@@ -38,7 +38,7 @@ const faqData = [
 const Faq = () => {
     return (
         <section className="bg-gray-100 px-4">
-            <div className="max-w-3xl mx-auto text-center">
+            <div className="max-w-4xl mx-auto text-center">
                 <h2 className="text-2xl md:text-3xl font-bold text-[#184042] mb-2">
                     Frequently Asked Question (FAQ)
                 </h2>

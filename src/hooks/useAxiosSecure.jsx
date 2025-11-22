@@ -4,7 +4,7 @@ import { useNavigate } from "react-router";
 
 // making data url in central
 const axiosInstance = axios.create({
-  baseURL: import.meta.env.VITE_API_URL,
+  baseURL: 'http://localhost:5000/'
 });
 
 const useAxiosSecure = () => {

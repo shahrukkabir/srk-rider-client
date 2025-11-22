@@ -66,10 +66,9 @@ const Services = () => {
               data-aos-easing="ease-out-cubic"
               data-aos-duration="2000"
               key={index}
-              className=" rounded-2xl p-6 text-left 
-                bg-white hover:bg-lime-200 transition-all duration-300"
+              className=" rounded-2xl p-6 text-left bg-white hover:bg-[rgb(164,218,195)] transition-all duration-300"
             >
-              .{service.icon}
+              {service.icon}
               <h3 className="text-[#00464f] font-semibold text-base md:text-xl mb-2 text-center">
                 {service.title}
               </h3>

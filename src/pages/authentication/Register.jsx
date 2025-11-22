@@ -14,29 +14,24 @@ const Register = () => {
   const navigate = useNavigate()
   const form = location.state?.form || '/'
   const [profilePic, setProfilePic] = useState('')
-  const axiosInstance= useAxios()
-
+  const axiosInstance = useAxios()
 
   // react hook form validation
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm();
+  const { register, handleSubmit, formState: { errors } } = useForm();
 
 
   const onSubmit = (data) => {
     createUser(data.email, data.password)
-      .then(async(result) => {
+      .then(async (result) => {
 
         // update user profile in the database
-        const userInfo={
+        const userInfo = {
           email: data.email,
           role: 'user', // default role
           created_at: new Date().toISOString(),
-          last_log_in:  new Date().toISOString()
+          last_log_in: new Date().toISOString()
         }
-        const userRes= await axiosInstance.post('/users', userInfo)
+        const userRes = await axiosInstance.post('/users', userInfo)
         console.log(userRes.data)
 
         // updata  user profile in firebase
@@ -128,7 +123,7 @@ const Register = () => {
               maxLength: 20,
             })}
             placeholder="Password"
-            className="w-full mb-2 px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-lime-200"
+            className="w-full text-3xl mb-2 px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-lime-200"
           />
           {errors.password?.type === "required" && (
             <span className="text-red-500 text-xs">Invalid Password</span>
@@ -149,8 +144,8 @@ const Register = () => {
               Forget Password?
             </span>
           </div>
-          <Button variant="secondary" type="submit" className="w-full mb-4">
-            Continue
+          <Button variant="secondary" type="submit" className="w-full mb-4 cursor-pointer">
+            Register
           </Button>
         </form>
         <div className="text-sm text-gray-500 mb-4 text-center">

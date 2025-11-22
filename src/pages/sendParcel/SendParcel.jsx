@@ -14,25 +14,20 @@ const generateTrackingID = () => {
 
 const SendParcel = () => {
     const navigate = useNavigate()
-    const {
-        register,
-        handleSubmit,
-        watch,
-        formState: { errors },
-    } = useForm();
+    const { register, handleSubmit, watch, formState: { errors } } = useForm();
     const { user } = useAuth();
     const axiosSecure = useAxiosSecure();
 
     const serviceCenters = useLoaderData();
     const uniqueRegions = [...new Set(serviceCenters.map((w) => w.region))];
-    const getDistrictsByRegion = (region) =>
-        serviceCenters.filter((w) => w.region === region).map((w) => w.district);
+    const getDistrictsByRegion = (region) => serviceCenters.filter((w) => w.region === region).map((w) => w.district);
 
     const parcelType = watch("type");
     const senderRegion = watch("sender_region");
     const receiverRegion = watch("receiver_region");
 
     const onSubmit = (data) => {
+        
         const weight = parseFloat(data.weight) || 0;
         const isSameDistrict = data.sender_center === data.receiver_center;
 
@@ -43,11 +38,13 @@ const SendParcel = () => {
         if (data.type === "document") {
             baseCost = isSameDistrict ? 60 : 80;
             breakdown = `Document delivery ${isSameDistrict ? "within" : "outside"} the district.`;
-        } else {
+        }
+        else {
             if (weight <= 3) {
                 baseCost = isSameDistrict ? 110 : 150;
                 breakdown = `Non-document up to 3kg ${isSameDistrict ? "within" : "outside"} the district.`;
-            } else {
+            }
+            else {
                 const extraKg = weight - 3;
                 const perKgCharge = extraKg * 40;
                 const districtExtra = isSameDistrict ? 0 : 40;
@@ -55,10 +52,10 @@ const SendParcel = () => {
                 extraCost = perKgCharge + districtExtra;
 
                 breakdown = `
-        Non-document over 3kg ${isSameDistrict ? "within" : "outside"} the district.<br/>
-        Extra charge: ৳40 x ${extraKg.toFixed(1)}kg = ৳${perKgCharge}<br/>
-        ${districtExtra ? "+ ৳40 extra for outside district delivery" : ""}
-      `;
+                            Non-document over 3kg ${isSameDistrict ? "within" : "outside"} the district.<br/>
+                            Extra charge: ৳40 x ${extraKg.toFixed(1)}kg = ৳${perKgCharge}<br/>
+                            ${districtExtra ? "+ ৳40 extra for outside district delivery" : ""}
+                            `;
             }
         }
 
@@ -66,25 +63,29 @@ const SendParcel = () => {
 
         Swal.fire({
             title: "Delivery Cost Breakdown",
-            icon: "info",
+            icon: "",
             html: `
-      <div class="text-left text-base space-y-2">
-        <p><strong>Parcel Type:</strong> ${data.type}</p>
-        <p><strong>Weight:</strong> ${weight} kg</p>
-        <p><strong>Delivery Zone:</strong> ${isSameDistrict ? "Within Same District" : "Outside District"}</p>
-        <hr class="my-2"/>
-        <p><strong>Base Cost:</strong> ৳${baseCost}</p>
-        ${extraCost > 0 ? `<p><strong>Extra Charges:</strong> ৳${extraCost}</p>` : ""}
-        <div class="text-gray-500 text-sm">${breakdown}</div>
-        <hr class="my-2"/>
-        <p class="text-xl font-bold text-green-600">Total Cost: ৳${totalCost}</p>
-      </div>
-    `,
+                    <div class="text-left text-base space-y-2">
+                      <p><strong>Parcel Type:</strong> ${data.type}</p>
+                      <p><strong>Weight:</strong> ${weight} kg</p>
+                      <p><strong>Delivery Zone:</strong> ${isSameDistrict ? "Within Same District" : "Outside District"}</p>
+                      <hr class="my-2"/>
+                      <p><strong>Base Cost:</strong> ৳${baseCost}</p>
+                      ${extraCost > 0 ? `<p><strong>Extra Charges:</strong> ৳${extraCost}</p>` : ""}
+                      <div class="text-gray-500 text-sm">${breakdown}</div>
+                      <hr class="my-2"/>
+                      <p class="text-xl font-bold text-green-600">Total Cost: ৳${totalCost}</p>
+                    </div>
+                 `,
             showDenyButton: true,
-            confirmButtonText: "Proceed to Payment",
             denyButtonText: "Continue Editing",
+            confirmButtonText: "Proceed to Payment",
+
+            denyButtonColor: "#dc2626",
             confirmButtonColor: "#16a34a",
-            denyButtonColor: "#d3d3d3",
+
+            reverseButtons: true,
+
             customClass: {
                 popup: "rounded-xl shadow-md px-6 py-6",
             },
@@ -114,6 +115,7 @@ const SendParcel = () => {
                     })
             }
         });
+
     };
     const inputBase = "w-full mb-2 px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-lime-200"
 
@@ -213,7 +215,7 @@ const SendParcel = () => {
 
                 {/* Submit Button */}
                 <div className="text-center">
-                    <Button type="submit" variant="secondary" className="w-full mx-auto">Submit Parcel</Button>
+                    <Button type="submit" variant="secondary" className="w-full mx-auto cursor-pointer">Submit Parcel</Button>
                 </div>
             </form>
         </div>

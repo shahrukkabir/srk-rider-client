@@ -10,11 +10,7 @@ const LogIn = () => {
   const location = useLocation()
   const navigate = useNavigate()
   const form = location.state?.form || '/'
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm();
+  const { register, handleSubmit, formState: { errors } } = useForm();
 
   const onSubmit = (data) => {
     signInUser(data.email, data.password)

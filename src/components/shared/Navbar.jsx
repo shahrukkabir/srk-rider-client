@@ -85,10 +85,11 @@ const Navbar = () => {
               <Button className="cursor-pointer">Log In</Button>
             </NavLink>
           )}
-          <Link to='/beARider'>  <Button className="cursor-pointer" variant="secondary">Be a rider</Button></Link>
-          <span className="cursor-pointer flex items-center justify-center bg-gray-900 rounded-full w-8 h-8 ml-2">
-            <FiArrowUpRight className="text-lime-200 text-lg" />
-          </span>
+          <Link to='/beARider'>  <Button className="flex cursor-pointer" variant="secondary">Be a rider
+            <span className="cursor-pointer flex items-center justify-center bg-gray-900 rounded-full w-6 h-6">
+              <FiArrowUpRight className="text-lime-200 text-lg" />
+            </span>
+          </Button></Link>
         </div>
         {/* Hamburger (Mobile) */}
         <button
@@ -156,9 +157,9 @@ const Navbar = () => {
             >
               Be a rider
             </Button></Link>
-            <span className="flex items-center justify-center bg-gray-900 rounded-full w-8 h-8 ml-2">
+            {/* <span className="flex items-center justify-center bg-gray-900 rounded-full w-8 h-8 ml-2">
               <FiArrowUpRight className="text-lime-200 text-lg" />
-            </span>
+            </span> */}
           </nav>
         </div>
       </div>

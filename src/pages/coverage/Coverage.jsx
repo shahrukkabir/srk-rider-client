@@ -1,4 +1,3 @@
-// components/Coverage.jsx
 import { useLoaderData } from "react-router";
 import { useState } from "react";
 import BangladeshMap from "../../components/bangladeshMap/BangladeshMap";

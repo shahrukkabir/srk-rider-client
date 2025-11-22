@@ -9,6 +9,9 @@ import Forbidden from './../pages/forbidden/Forbidden';
 import Spinner from './../components/ui/Spinner';
 import PrivateRoutes from './PrivateRoutes';
 import SendParcel from './../pages/sendParcel/SendParcel';
+import DashboardLayout from './../layout/DashBoardLayout';
+import DashboardHome from './../pages/dashboard/DashboardHome';
+import MyParcels from './../pages/dashboard/MyParcels';
 
 export const router = createBrowserRouter([
     {
@@ -24,7 +27,8 @@ export const router = createBrowserRouter([
                 hydrateFallbackElement: <Spinner />,
                 loader: () => fetch("./serviceCenter.json"),
                 Component: Coverage,
-            }, {
+            }, 
+            {
                 path: 'forbidden',
                 Component: Forbidden
             },
@@ -50,6 +54,20 @@ export const router = createBrowserRouter([
                 path: 'register',
                 Component: Register
             }
+        ]
+    },
+    {
+        path: "/dashboard",
+        element: <PrivateRoutes><DashboardLayout /> </PrivateRoutes>,
+        children: [
+            {
+                index: true,
+                Component: DashboardHome
+            },
+            {
+                path: 'myParcels',
+                Component: MyParcels
+            },
         ]
     }
 ]);
