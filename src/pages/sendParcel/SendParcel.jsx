@@ -22,12 +22,13 @@ const SendParcel = () => {
     const uniqueRegions = [...new Set(serviceCenters.map((w) => w.region))];
     const getDistrictsByRegion = (region) => serviceCenters.filter((w) => w.region === region).map((w) => w.district);
 
+    // eslint-disable-next-line react-hooks/incompatible-library
     const parcelType = watch("type");
     const senderRegion = watch("sender_region");
     const receiverRegion = watch("receiver_region");
 
     const onSubmit = (data) => {
-        
+
         const weight = parseFloat(data.weight) || 0;
         const isSameDistrict = data.sender_center === data.receiver_center;
 

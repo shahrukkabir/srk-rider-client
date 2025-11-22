@@ -18,7 +18,7 @@ const PaymentForm = () => {
     const { logTracking } = useTrackingLogger();
     const { parcelId } = useParams()
     const axiosSecure = useAxiosSecure()
-
+ 
     const { isPending, data: parcelInfo = {} } = useQuery({
         queryKey: ['parcel', parcelId],
         queryFn: async () => {
@@ -74,13 +74,15 @@ const PaymentForm = () => {
                     },
                 },
             });
+            console.log(result);
+            
             if (result.error) {
                 setError(result.error.message);
             }
             else {
                 setError('')
                 if (result.paymentIntent.status === 'succeeded') {
-                    console.log('Payment Succeeded')
+                    // console.log('Payment Succeeded')
                     const transactionId = result.paymentIntent.id;
                     // setp-4: mark parcel paid also create payment histotry
                     const paymentData = {
@@ -122,14 +124,13 @@ const PaymentForm = () => {
 
     }
 
-
     return (
         <div>
             <form onSubmit={handleSubmit} className="space-y-4 bg-white p-6 rounded-xl shadow-md w-full max-w-md mx-auto">
                 <CardElement className="p-2 border rounded" />
                 <Button
                     variant="secondary"
-                    className="w-full"
+                    className="w-full cursor-pointer"
                     type="submit"
                     disabled={!stripe}>
                     Pay ${amount}

@@ -12,6 +12,10 @@ import SendParcel from './../pages/sendParcel/SendParcel';
 import DashboardLayout from './../layout/DashBoardLayout';
 import DashboardHome from './../pages/dashboard/DashboardHome';
 import MyParcels from './../pages/dashboard/MyParcels';
+import Payment from './../pages/dashboard/Payment';
+import PaymentHistory from './../pages/dashboard/PaymentHistory';
+import TrackParcel from './../pages/dashboard/TrackParcel';
+import MyProfile from './../pages/myprofile/MyProfile';
 
 export const router = createBrowserRouter([
     {
@@ -27,7 +31,7 @@ export const router = createBrowserRouter([
                 hydrateFallbackElement: <Spinner />,
                 loader: () => fetch("./serviceCenter.json"),
                 Component: Coverage,
-            }, 
+            },
             {
                 path: 'forbidden',
                 Component: Forbidden
@@ -67,6 +71,25 @@ export const router = createBrowserRouter([
             {
                 path: 'myParcels',
                 Component: MyParcels
+            },
+            {
+                path: 'payment/:parcelId',
+                Component: Payment,
+
+            },
+            {
+                path: 'paymentHistory',
+                Component: PaymentHistory,
+
+            },
+            {
+                path: 'track',
+                Component: TrackParcel,
+
+            },
+            {
+                path: "profile",
+                Component: MyProfile,
             },
         ]
     }

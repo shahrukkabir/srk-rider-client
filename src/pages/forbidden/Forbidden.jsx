@@ -15,7 +15,7 @@ const Forbidden = () => {
             <Button
             variant="danger"
                 onClick={() => navigate("/")}
-                className="inline-flex items-center gap-2 py-3"
+                className="inline-flex items-center gap-2 py-3 cursor-pointer"
             >
                 <FaArrowLeft />
                 Back to Home
