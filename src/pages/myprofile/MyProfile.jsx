@@ -87,7 +87,7 @@ const MyProfile = () => {
         </div>
         <div className="divider"></div>
         <div className="flex flex-col gap-2 items-center">
-          <Button onClick={handleLogOut} variant="danger">
+          <Button className="cursor-pointer" onClick={handleLogOut} variant="danger">
             Log Out
           </Button>
         </div>

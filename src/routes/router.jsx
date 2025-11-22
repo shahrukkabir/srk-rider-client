@@ -16,6 +16,7 @@ import Payment from './../pages/dashboard/Payment';
 import PaymentHistory from './../pages/dashboard/PaymentHistory';
 import TrackParcel from './../pages/dashboard/TrackParcel';
 import MyProfile from './../pages/myprofile/MyProfile';
+import BeARider from './../pages/beARider/BeARider';
 
 export const router = createBrowserRouter([
     {
@@ -44,6 +45,12 @@ export const router = createBrowserRouter([
                 element: (<PrivateRoutes> <SendParcel /> </PrivateRoutes>
                 ),
             },
+            {
+                path: "beARider",
+                hydrateFallbackElement: <Spinner />,
+                loader: () => fetch("./serviceCenter.json"),
+                element: <PrivateRoutes><BeARider /></PrivateRoutes>,
+            }
         ]
     },
     {
