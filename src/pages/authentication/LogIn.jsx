@@ -7,9 +7,9 @@ import Swal from "sweetalert2";
 
 const LogIn = () => {
   const { setUser, signInUser } = useAuth();
-  const location = useLocation()
-  const navigate = useNavigate()
-  const form = location.state?.form || '/'
+  const location = useLocation();
+  const navigate = useNavigate();
+  const from = location.state?.from || '/';
   const { register, handleSubmit, formState: { errors } } = useForm();
 
   const onSubmit = (data) => {
@@ -17,7 +17,7 @@ const LogIn = () => {
       .then((userCredential) => {
         const currentUser = userCredential.user;
         setUser(currentUser)
-        navigate(form)
+        navigate(from)
         Swal.fire({
           icon: "success",
           title: "Logged in Successfull",
@@ -94,7 +94,7 @@ const LogIn = () => {
         <div className="text-sm text-gray-500 mb-4 text-center">
           Don’t have any account?{" "}
           <Link
-            to="/register"
+            to="/register" state={{ from }}
             className="text-lime-600 font-semibold hover:underline"
           >
             Register

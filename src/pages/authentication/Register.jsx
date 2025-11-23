@@ -10,9 +10,9 @@ import useAxios from "../../hooks/useAxios";
 
 const Register = () => {
   const { setUser, createUser, updateUser } = useAuth();
-  const location = useLocation()
-  const navigate = useNavigate()
-  const form = location.state?.form || '/'
+  const location = useLocation();
+  const navigate = useNavigate();
+  const from = location.state?.from || '/';
   const [profilePic, setProfilePic] = useState('')
   const axiosInstance = useAxios()
 
@@ -21,11 +21,13 @@ const Register = () => {
 
 
   const onSubmit = (data) => {
+    
     createUser(data.email, data.password)
       .then(async (result) => {
 
         // update user profile in the database
         const userInfo = {
+          name: data.name,
           email: data.email,
           role: 'user', // default role
           created_at: new Date().toISOString(),
@@ -47,7 +49,7 @@ const Register = () => {
             console.log('faild to update profile pic', error)
           })
         setUser(result)
-        navigate(form)
+        navigate(from)
         Swal.fire({
           icon: "success",
           title: "Registration Successfull",
@@ -123,7 +125,7 @@ const Register = () => {
               maxLength: 20,
             })}
             placeholder="Password"
-            className="w-full text-3xl mb-2 px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-lime-200"
+            className="w-full text-sm mb-2 px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-lime-200"
           />
           {errors.password?.type === "required" && (
             <span className="text-red-500 text-xs">Invalid Password</span>

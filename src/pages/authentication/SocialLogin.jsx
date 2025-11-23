@@ -7,9 +7,9 @@ import useAxios from "../../hooks/useAxios";
 
 const SocialLogin = () => {
   const { setUser, createUserWithGoogle } = useAuth();
-  const location = useLocation()
-  const navigate = useNavigate()
-  const form = location.state?.form || '/'
+  const location = useLocation();
+  const navigate = useNavigate();
+  const from = location.state?.from || '/';
   const axiosInstance = useAxios()
 
 
@@ -25,10 +25,10 @@ const SocialLogin = () => {
           last_log_in: new Date().toISOString()
         }
         const userRes = await axiosInstance.post('/users', userInfo)
-        console.log('user update info',userRes.data)
+        console.log('user update info', userRes.data)
 
         setUser(result.user)
-        navigate(form)
+        navigate(from)
         Swal.fire({
           icon: "success",
           title: "Google Logged in Successfull",
@@ -50,7 +50,7 @@ const SocialLogin = () => {
       <Button
         onClick={handleGoogleSignIn}
         variant="google"
-        className="w-full mb-4 cursor-pointer" 
+        className="w-full mb-4 cursor-pointer"
       >
         <FcGoogle className="text-xl " />
         Login with google

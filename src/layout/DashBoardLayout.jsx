@@ -78,6 +78,7 @@ const DashboardLayout = () => {
                     {/* rider links */}
                     {
                         !roleLoading && role === 'rider' && <>
+                            <hr className="my-4 mx-2 border-base-800 border-dashed" />
                             <li>
                                 <NavLink to="/dashboard/pending-deliveries">
                                     <FaTasks className="inline-block mr-2" />
@@ -101,6 +102,7 @@ const DashboardLayout = () => {
                     {/* admin link */}
                     {
                         !roleLoading && role === 'admin' && <>
+                            <hr className="my-4 mx-2 border-base-800 border-dashed" />
                             <li>
                                 <NavLink to="/dashboard/assign-rider">
                                     <FaMotorcycle className="inline-block mr-2" />
