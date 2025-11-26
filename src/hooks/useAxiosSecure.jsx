@@ -4,7 +4,7 @@ import { useNavigate } from "react-router";
 
 // making data url in central
 const axiosInstance = axios.create({
-  baseURL: 'http://localhost:5000/'
+  baseURL: 'https://srk-rider-server.vercel.app/'
 });
 
 const useAxiosSecure = () => {

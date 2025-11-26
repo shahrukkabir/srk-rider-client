@@ -38,7 +38,7 @@ const Register = () => {
 
         // updata  user profile in firebase
         const userProfile = {
-          dispalyName: data.name,
+          displayName: data.name,
           photoURL: profilePic,
         }
         updateUser(userProfile)

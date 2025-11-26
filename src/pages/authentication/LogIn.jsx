@@ -63,7 +63,7 @@ const LogIn = () => {
               maxLength: 20,
             })}
             placeholder="Password"
-            className="w-full mb-2 px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-lime-200"
+            className="w-full mb-2  px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-lime-200"
           />
           {errors.password?.type === "required" && (
             <span className="text-red-500 text-xs">Invalid Password</span>
@@ -87,7 +87,7 @@ const LogIn = () => {
               Forget Password?
             </Link>
           </div>
-          <Button variant="secondary" type="submit" className="w-full mb-4">
+          <Button variant="secondary" type="submit" className="w-full mb-4 cursor-pointer">
             Continue
           </Button>
         </form>

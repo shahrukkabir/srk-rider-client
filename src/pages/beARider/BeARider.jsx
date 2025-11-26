@@ -18,6 +18,10 @@ const BeARider = () => {
 
     const serviceCenters = useLoaderData();
 
+    if (!user) {
+        return <div className="text-center py-10">Loading...</div>
+    }
+
     const regions = [...new Set(serviceCenters.map((s) => s.region))];
     const districts = serviceCenters
         .filter((s) => s.region === selectedRegion)
@@ -62,16 +66,16 @@ const BeARider = () => {
                         type="text"
                         value={user?.displayName || ""}
                         readOnly
-                        className={`${inputBase} input input-bordered text-black bg-gray-100`}
+                        className={`${inputBase} bg-gray-100 text-black`}
                     />
 
-                    {/* Email (read-only) */}
                     <input
                         type="email"
                         value={user?.email || ""}
                         readOnly
-                        className={`${inputBase} input input-bordered text-black bg-gray-100`}
+                        className={`${inputBase} bg-gray-100 text-black`}
                     />
+
 
                     {/* Age */}
                     <input
