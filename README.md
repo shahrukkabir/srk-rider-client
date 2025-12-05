@@ -151,6 +151,10 @@ SrkRider is a complete parcel delivery management system where Users can request
 📧 `srkrider@admin.com`  
 🔑 `Srkrider.admin`
 
+**Rider Credentials:**  
+📧 `srkrider@rider.com`  
+🔑 `Srkrider.rider`
+
 ---
 
 ## 🛠️ Tech Stack & Main Packages

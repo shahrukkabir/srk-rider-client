@@ -14,7 +14,7 @@ const NotFound = () => {
             <p className="text-gray-500 mb-6 text-center max-w-md">
                 Sorry, the page you are looking for does not exist or has been moved.
             </p>
-            <a href="/" ><Button variant='secondary'>Go Home</Button></a>
+            <a href="/" ><Button className='cursor-pointer' variant='secondary'>Go Home</Button></a>
         </div>
     );
 };

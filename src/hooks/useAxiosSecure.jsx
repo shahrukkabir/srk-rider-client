@@ -1,40 +1,56 @@
+import { useEffect } from "react";
 import axios from "axios";
 import useAuth from "./useAuth";
 import { useNavigate } from "react-router";
 
-// making data url in central
 const axiosInstance = axios.create({
-  baseURL: 'https://srk-rider-server.vercel.app/'
+  baseURL: import.meta.env.VITE_API_URL,
 });
 
 const useAxiosSecure = () => {
   const { user, signOutUser } = useAuth();
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
-  // interceptor request
-  axiosInstance.interceptors.request.use((config) => {
-    config.headers.Authorization = `Bearer ${user.accessToken}`;
-    return config;
-  });
+  useEffect(() => {
+    const requestInterceptor = axiosInstance.interceptors.request.use(
+      async (config) => {
+        if (user) {
+          const token = await user.getIdToken();
+          if (token) {
+            config.headers.Authorization = `Bearer ${token}`;
+          }
+        }
+        else {
+          delete config.headers.Authorization;
+        }
+        return config;
+      },
+      (error) => Promise.reject(error)
+    );
 
-  // interceptor response
-  axiosInstance.interceptors.response.use(
-    (response) => {
-      return response;
-    },
-    (error) => {
-      const status = error.status;
-      if (status === 403) {
-        navigate('/forbidden')
+    const responseInterceptor = axiosInstance.interceptors.response.use(
+      (response) => response,
+      async (error) => {
+        const status = error?.response?.status;
+
+        if (status === 403) {
+          navigate("/forbidden");
+        } else if (status === 401) {
+          try {
+            await signOutUser();
+            console.log("Signed out user for status code 401");
+          } catch (err) {
+            console.error(err);
+          }
+        }
+        return Promise.reject(error);
       }
-      else if (error.status === 401) {
-        signOutUser()
-          .then(() => console.log("sign out user for status code 401"))
-          .catch((error) => console.log(error));
-      }
-      return Promise.reject(error);
-    }
-  );
+    );
+    return () => {
+      axiosInstance.interceptors.request.eject(requestInterceptor);
+      axiosInstance.interceptors.response.eject(responseInterceptor);
+    };
+  }, [user, navigate, signOutUser]);
 
   return axiosInstance;
 };
